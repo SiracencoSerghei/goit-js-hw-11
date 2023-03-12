@@ -1,15 +1,14 @@
 
 body {
-    padding: 15px;
+    padding: 20px;
 }
 
 .search-form {
-    background: rgb(96, 96, 231);
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background: linear-gradient(to bottom,rgb(25, 0, 255) 50%, #e8f808ce 50%);
+    padding: 10px;
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
 
 }
@@ -26,7 +25,7 @@ body {
     text-decoration: none;
     color: rgb(151, 147, 147);
     border: 2px solid rgb(151, 147, 147);
-    border-radius: 20px;
+    border-radius: 5px;
     overflow: hidden;
     flex-basis: calc((100% - 30px)/4);
     // text-decoration: none;
@@ -64,9 +63,10 @@ body {
 
 button {
     padding: 10px;
-    border: none;
+    border:rgb(151, 147, 147), 2px;
     border-radius: 5px;
-    background: rgb(250, 226, 10);
+    background-color:  rgb(247, 125, 108);
+    color: #000000;
 }
 
 input {
