@@ -41,7 +41,7 @@ padding-top: 65px;
         flex-basis: calc((100% - 30px)/3);
     }
     @media screen and (min-width: 980px) {
-            flex-basis: calc((100% - 30px)/4);
+            flex-basis: calc((100% - 40px)/5);
         }
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -50,10 +50,14 @@ padding-top: 65px;
     overflow: hidden;
 }
 
-
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 .gallery img {
-    object-fit: contain;
-    height: 420px;
+    object-fit: cover;
+    height: 400px;
 }
 
 .gallery p {
