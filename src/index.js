@@ -8,7 +8,6 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 import {btnSearchSubmit, formElem, galleryContainer, loadMoreBtn, happyEndEl} from './modules/refs';
 import { loadingPhotos, fetchPhotos } from './modules/fetchPhotos';
-import { infoMessage} from './modules/infoMessages';
 
 // variables
 const observer = new IntersectionObserver(intersector);
@@ -31,24 +30,13 @@ const params = {
       page: 1,
       per_page: 40,
     };
-    
- const {
-    BASE_URL,
-    q,
-    key,
-    image_type,
-    orientation,
-    safesearch,
-    order,
-    page,
-    per_page,
-  } = params;
+
 let totalPicts = 0;
 
 formElem.addEventListener('submit', onSearchSubmit);
 
 
-console.log('init', pageN);
+// console.log('init', pageN);
 
 // functions
 
@@ -74,9 +62,10 @@ async function onSearchSubmit(evt) {
     totalPicts = 0;
     pageN += params.page;
 
-    // console.log('before url', pageN);
+//     console.log('before url', params.q);
+//  console.log('before url',params.q, params.page, params.per_page)
 
-const url = `${BASE_URL}?key=${key}&q=${q}&image_type=${image_type}&orientation=${orientation}&safesearch=${safesearch}&order=${order}&page=${pageN}&per_page=${per_page}`;
+const url = `${params.BASE_URL}?key=${params.key}&q=${params.q}&image_type=${params.image_type}&orientation=${params.orientation}&safesearch=${params.safesearch}&order=${params.order}&page=${pageN}&per_page=${params.per_page}`;
 
 // console.log(url);
 
@@ -89,7 +78,7 @@ const url = `${BASE_URL}?key=${key}&q=${q}&image_type=${image_type}&orientation=
        await infoPhoto(response);
         await changePage(response);
         await renderMarkup(response);
-        await console.log('return pageN', pageN)
+        // await console.log('return pageN', pageN)
     } catch(error) {
          console.error(error);
     }
@@ -100,12 +89,14 @@ const url = `${BASE_URL}?key=${key}&q=${q}&image_type=${image_type}&orientation=
 function infoPhoto(response) {
   totalPicts = response.totalHits;
     if(  totalPicts === 0) {
-      console.log('loading11', response);
-        Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+      // console.log('loading11', response);
+      Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+       happyEndEl.classList.add('hidden');
     };
     if(totalPicts > 0) {
-      console.log('loading12', response);
-         Notiflix.Notify.success(`Hooray! We found ${totalPicts} images.`)
+      // console.log('loading12', response);
+      Notiflix.Notify.success(`Hooray! We found ${totalPicts} images.`)
+      happyEndEl.classList.remove('hidden');
          return response;
     };
     return response;
@@ -113,24 +104,24 @@ function infoPhoto(response) {
 
  function intersector(entries) {
     if(entries[0].isIntersecting) {
-      console.log('aa',params.q, params.page, params.per_page)
+      // console.log('intersector',params.q, params.page, params.per_page)
 
-        const url = `${BASE_URL}?key=${key}&q=${q}&image_type=${image_type}&orientation=${orientation}&safesearch=${safesearch}&order=${order}&page=${pageN}&per_page=${per_page}`;
+        const url = `${params.BASE_URL}?key=${params.key}&q=${params.q}&image_type=${params.image_type}&orientation=${params.orientation}&safesearch=${params.safesearch}&order=${params.order}&page=${pageN}&per_page=${params.per_page}`;
         // console.log('first', pageN);
         // pageN += 1;
         // console.log('second', pageN);
         fetchPhotos(url)
         .then(renderMarkup)
         .catch(() => {})
-        console.log('return intersector pageN', pageN)
+        // console.log('return intersector pageN', pageN)
         return pageN
     }
  };
 
 async function changePage() {
-  await console.log('first observe changePage', pageN);
+  // await console.log('first observe changePage', pageN);
  await observer.observe(happyEndEl)
- await console.log('second observe changePage', pageN);
+//  await console.log('second observe changePage', pageN);
 };
 
   function renderMarkup (response) {
@@ -164,7 +155,7 @@ async function changePage() {
         return;
     }
     pageN += 1;
-    console.log('finish', pageN);
+    // console.log('finish', pageN);
     happyEndEl.classList.add('hidden');
     return
    };

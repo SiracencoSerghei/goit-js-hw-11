@@ -8,21 +8,25 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <form class="search-form" id="search-form">
-  <input
-    type="text"
-    name="searchQuery"
-    autocomplete="off"
-    placeholder="Search images..."
-  />
-  <button type="submit">Search</button>
-</form>
-<div class="gallery">
-  <!-- Карточки изображений -->
-</div>
-
-<p class="happy-end hidden">We're sorry, but you've reached the end of search results.</p>
-<!-- <button type="button" class="load-more hidden">Load more</button> -->
+    <header class="header">
+      <form class="search-form" id="search-form">
+        <input
+      type="text"
+      name="searchQuery"
+      autocomplete="off"
+      placeholder="Search images..."
+        />
+        <button type="submit">Search</button>
+      </form>
+    </header>
+<main>
+  <div class="gallery">
+    <!-- Карточки изображений -->
+  </div>
+  
+  <p class="happy-end hidden">We're sorry, but you've reached the end of search results.</p>
+  <!-- <button type="button" class="load-more hidden">Load more</button> -->
+</main>
 
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <!-- <include src="./partials/example.html"></include> -->

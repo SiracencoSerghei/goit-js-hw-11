@@ -15,7 +15,7 @@ export async function loadingPhotos(url) {
     Notiflix.Loading.dots('Loading...');
     const response = await fetchPhotos(url);
     Notiflix.Loading.remove();
-    console.log('loading1', response);
+    // console.log('loading1', response);
     return response;
 };
 

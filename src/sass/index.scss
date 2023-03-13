@@ -1,10 +1,24 @@
 
 body {
-    padding: 20px;
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+main {
+padding-top: 65px;
 }
 
 .search-form {
-    background: linear-gradient(to bottom,rgb(25, 0, 255) 50%, #e8f808ce 50%);
+    background: linear-gradient(to bottom,rgb(0, 0, 255) 0%,
+        rgb(0, 0, 255) 50%,
+        rgb(255, 255, 0) 50%,
+        rgb(255, 255, 0)  100%);
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -23,18 +37,16 @@ body {
 
 .gallery>a {
     text-decoration: none;
-    color: rgb(151, 147, 147);
-    border: 2px solid rgb(151, 147, 147);
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(90, 85, 85);
     border-radius: 5px;
     overflow: hidden;
     flex-basis: calc((100% - 30px)/4);
-    // text-decoration: none;
 }
 
 .gallery img {
     object-fit: contain;
     height: 420px;
-    // width: calc((100% - 30px)/4);
 }
 
 .gallery p {
@@ -47,7 +59,6 @@ body {
     align-self: flex-end;
     display: flex;
     justify-content: space-around;
-    // gap: 5px;
 
 }
 
@@ -63,14 +74,26 @@ body {
 
 button {
     padding: 10px;
-    border:rgb(151, 147, 147), 2px;
+    border: 3px solid rgb(255, 255, 255);
     border-radius: 5px;
-    background-color:  rgb(247, 125, 108);
-    color: #000000;
+    background: linear-gradient(to right, rgb(0, 0, 255) 0%, rgb(0, 0, 255) 33%, rgb(255, 255, 0) 33%, rgb(255, 255, 0) 66%, rgb(255, 0, 0) 66%, rgb(255, 0, 0) 100%);
+    color: #044704;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+button[disabled] {
+    opacity: 0.3;
 }
 
 input {
     padding: 10px;
     border-radius: 5px;
     margin-right: 15px;
+}
+
+.disable {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
 }
