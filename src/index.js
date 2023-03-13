@@ -54,7 +54,8 @@ function switchOnSearchSubmit () {
 };
 
 async function onSearchSubmit(evt) {
-    evt.preventDefault();
+  evt.preventDefault();
+  clearGallery(); // очищаем галерею
     const form = evt.currentTarget;
     const inputElement = form.elements['searchQuery'];
     const inputValue = inputElement.value.trim();
@@ -160,3 +161,6 @@ async function changePage() {
     return
    };
 
+function clearGallery() {
+  galleryContainer.innerHTML = '';
+}
