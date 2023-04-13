@@ -1,6 +1,6 @@
 import axios from "axios";
 import Notiflix from 'notiflix';
-import infoError from './infoMessages';
+
 
  export async function fetchPhotos(url) {
   try {
